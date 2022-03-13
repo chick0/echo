@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from os import getlogin
 from time import time
 from json import load
