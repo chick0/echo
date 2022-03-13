@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 from os import getlogin
+from platform import system
 from time import time
 from json import load
 from json import dumps
 from urllib.request import Request
 from urllib.request import urlopen
+
+
+def get_username() -> str:
+    try:
+        return getlogin()
+    except (OSError, Expection):
+        return system()
 
 
 def get_hook_urls() -> list:
@@ -27,7 +35,7 @@ def get_payload() -> dict:
             "content": "server started at <t:{now}:T>",
             "embeds": None,
             "username": "echo from {username}".format(
-                username=getlogin()
+                username=get_username()
             ),
             "avatar_url": "https://avatars.githubusercontent.com/u/64462443?size=80"
         }
