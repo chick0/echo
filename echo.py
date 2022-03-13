@@ -11,7 +11,7 @@ from urllib.request import urlopen
 def get_username() -> str:
     try:
         return getlogin()
-    except (OSError, Expection):
+    except (OSError, Exception):
         return system()
 
 
