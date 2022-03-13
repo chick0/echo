@@ -9,7 +9,7 @@ from urllib.request import urlopen
 def get_hook_urls() -> list:
     try:
         with open("targets.txt", mode="r", encoding="utf8") as t_reader:
-            return [x.strip() for x in t_reader.read().split("\n")]
+            return [x for x in [x.strip() for x in t_reader.read().split("\n")] if len(x) > 0]
     except FileNotFoundError:
         print("* fail to read targets!")
         print("  create 'targets.txt' to send echo with discord webhook")
